@@ -1,0 +1,8 @@
+﻿  main.cpp
+D:\Repos\programs\WorkWithConcepts\WorkWithConcepts\main.cpp(38,9): warning C4244: =: преобразование "r2" в "__int64", возможна потеря данных
+          with
+          [
+              r2=double
+          ]
+D:\Repos\programs\WorkWithConcepts\WorkWithConcepts\main.cpp(51): message : выполняется компиляция ссылки на экземпляр шаблон функции "auto XX<int>::proc<double>(std::vector<double,std::allocator<double>>)"
+  WorkWithConcepts.vcxproj -> D:\Repos\programs\WorkWithConcepts\x64\Debug\WorkWithConcepts.exe

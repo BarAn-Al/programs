@@ -2,21 +2,26 @@
 #include <regex>
 
 int main() {
-    std::regex reg("(ab)+");
-    std::string s;
-    std::cin >> s;
+    setlocale(LC_ALL, "RUSSIAN");
+    std::regex reg("(\\s+[IN].+\\s+|.+\\s+)?(Беларусь|Венгрия|Польша|Болгария)(\\s+\\d+\\s+)(площадь(\\s+|\\s+.+\\s+)(\\d+|\\d+\\.?\\d+) кв.км|население(\\s+ \\d+))");
+    std::string data;
+    data = "    Iфлыдывотфсдцугфил   Венгрия   89429  площадь          93792.8532 кв.км";
+    std::cout << data << "\n\n";
 
-    std::string copy = s;
-    std::sregex_iterator end;
-    std::sregex_iterator pos(s.begin(), s.end(), reg);
-    for (; pos != end; ) {
-        std::cout << pos->str() << '\n';
-        copy = std::string(pos->str()) + std::string(pos->suffix());
-        copy[0] = ' ';
-        pos = std::sregex_iterator(copy.begin(), copy.end(), reg);
+    if (std::regex_match(data, reg)) {
+        std::cout << "Строка подходит под шаблон\n\n";
+    }
+    else {
+        std::cout << "Строка не подходит под шаблон\n\n";
     }
 
-
+    std::smatch m;
+    if (std::regex_search(data.cbegin(), data.cend(), m, reg)) {
+        std::cout << "Существует подстрока, подходящая под шаблон:\n" << m.str();
+    }
+    else {
+        std::cout << "Не существует подстроки, подходящей под шаблон";
+    }
 
 	return 0;
 }
