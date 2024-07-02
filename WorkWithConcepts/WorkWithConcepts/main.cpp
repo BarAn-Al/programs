@@ -47,10 +47,8 @@ int main() {
 
 	std::vector <int> a({ 1, 2, 3, 4, 5, 6, 7 });
 	std::cout << item.proc(a) << '\n';
-	std::vector <double> b({ 1.32, 2.589, 3.391, 4.223131, 5.8942 });
+	std::vector <double> b({ 1.3, 2.5, 3.2, 4.2, 5.8 });
 	std::cout << item.proc(b) << '\n';
-
-
 
 	return 0;
 }
