@@ -1,0 +1,3 @@
+﻿  main.cpp
+D:\Repos\programs\TextAndBinFiles\TextAndBinFiles\main.cpp(127,11): warning C4244: инициализация: преобразование "unsigned __int64" в "int", возможна потеря данных
+  TextAndBinFiles.vcxproj -> D:\Repos\programs\TextAndBinFiles\x64\Debug\TextAndBinFiles.exe
