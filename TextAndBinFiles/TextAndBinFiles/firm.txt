@@ -1,2 +1,2 @@
-3245	Siemens
-4118	Panasonic
+4118	Panasonic	
+3245	Siemens	
