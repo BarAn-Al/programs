@@ -6,7 +6,7 @@
 #include <cmath>
 #include <algorithm>
 
-class stuff {
+class film {
 public:
 	int firmCode = 0;
 	char stuffName[31] = "                              ";
@@ -15,9 +15,9 @@ public:
 	int weight = 0;
 	char firmName[11] = "          ";
 
-	stuff() = default;
+	film() = default;
 
-	stuff(const stuff& other) : firmCode(other.firmCode), cost(other.cost), amount(other.amount), weight(other.weight) {
+	film(const stuff& other) : firmCode(other.firmCode), cost(other.cost), amount(other.amount), weight(other.weight) {
 		int i;
 		for (i = 0; other.stuffName[i] != '\0'; i++) {
 			stuffName[i] = other.stuffName[i];
@@ -30,7 +30,7 @@ public:
 		firmName[i] = other.firmName[i];
 	}
 
-	stuff operator = (const stuff& other) {
+	film operator = (const stuff& other) {
 		firmCode = other.firmCode;
 		cost = other.cost;
 		amount = other.amount;
@@ -128,7 +128,7 @@ void TXTtoBIN(const std::string& txtFilename, const std::string& binFilename) {
 	if (fin.is_open() && fout.is_open()) {
 		std::string buffer;
 		while (std::getline(fin, buffer)) {
-			stuff a;
+			film a;
 			std::istringstream sin(buffer);
 			std::vector <std::string> data;
 			std::string d;
@@ -174,9 +174,9 @@ void BINtoTXT(const std::string& binFilename, const std::string& txtFilename) {
 	std::ofstream fout(txtFilename);
 
 	if (fin.is_open() && fout.is_open()) {
-		size_t n = file_Size(fin) / sizeof(stuff);
+		size_t n = file_Size(fin) / sizeof(film);
 		for (size_t i = 0; i < n; i++) {
-			stuff a;
+			film a;
 			fin >> a;
 			if (a.firmCode) {
 				fout << a.firmCode << '\t';
@@ -214,8 +214,8 @@ void BINtoTXT(const std::string& binFilename, const std::string& txtFilename) {
 void CreateNewSortedFile() {
 	//—ортировка товаров через оперативную пам€ть
 	std::fstream fin("stuff.bin", std::ios_base::binary | std::ios_base::in | std::ios_base::out);
-	size_t stuffSize = file_Size(fin) / sizeof(stuff);
-	stuff* products = new stuff[stuffSize];
+	size_t stuffSize = file_Size(fin) / sizeof(film);
+	film* products = new film[stuffSize];
 	if (fin.is_open()) {
 		for (size_t i = 0; i < stuffSize; i++) {
 			fin.read((char *)&products[i], sizeof(products[0]));
@@ -237,10 +237,10 @@ void CreateNewSortedFile() {
 	fin.close();
 	fin.open("firm.bin", std::ios_base::binary | std::ios_base::in | std::ios_base::out);
 
-	size_t firmSize = file_Size(fin) / sizeof(stuff);
+	size_t firmSize = file_Size(fin) / sizeof(film);
 	for (size_t i = 0; i < firmSize; i++) {
 		for (size_t j = i + 1; j < firmSize; j++) {
-			stuff s1, s2;
+			film s1, s2;
 			fin.seekg(i * sizeof(s1));
 			fin.read((char*)&s1, sizeof(s1));
 			fin.seekg(j * sizeof(s2));
@@ -260,7 +260,7 @@ void CreateNewSortedFile() {
 	size_t i = 0;
 	size_t j = 0;
 	while (i < firmSize || j < stuffSize) {
-		stuff a;
+		film a;
 		fin.seekg(i * sizeof(a));
 		fin.read((char*)&a, sizeof(a));
 
@@ -291,7 +291,7 @@ void CreateNewSortedFile() {
 
 void solution() {
 	std::fstream m("M1.bin", std::ios_base::binary | std::ios_base::in | std::ios_base::out);
-	std::vector <stuff> products(file_Size(m) / sizeof(stuff));
+	std::vector <film> products(file_Size(m) / sizeof(film));
 
 	for (int i = 0; i < products.size(); i++) {
 		m.read((char*)&products[i], sizeof(products[0]));
@@ -323,7 +323,7 @@ CONTINUE_PROGRAMM:
 
 			std::cin >> move;
 			std::cout << '\n';
-			stuff pr;
+			film pr;
 			switch (move) {
 			case 0:
 				goto CLOSE_PROGRAMM;

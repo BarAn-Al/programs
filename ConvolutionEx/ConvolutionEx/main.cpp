@@ -1,6 +1,19 @@
 #include <iostream>
 #include <concepts>
+#include <vector>
 #include <set>
+
+class Rational {
+public:
+	int numerator;
+	int denominator;
+
+	Rational(int num, int den) : numerator(num), denominator(den) {}
+
+	operator double() {
+		return double(numerator) / double(denominator);
+	}
+};
 
 template <typename R, typename ... Ts>
 auto IsOneInRange(R min, R max, Ts ... ts) {
@@ -17,9 +30,11 @@ auto PushInSet(std::set <T>& s, Ts ... ts) {
 	return (s.insert(ts).second && ...);
 }
 
-
-
-
+template <typename T, typename ... Ts>
+void PushInVector(std::vector <T>& v, Ts ... ts) {
+	(v.push_back(ts), ...);
+	return;
+}
 
 
 int main() {
@@ -33,6 +48,10 @@ int main() {
 		std::cout << i << ' ';
 	}
 	std::cout << '\n';
+
+	std::vector <Rational> v = {Rational(1, 10)};
+	PushInVector(v, Rational(10, 3), Rational(3, 5), Rational(9, 7));
+
 
 
 	return 0;

@@ -2,6 +2,30 @@
 #include <iostream>
 #include <cmath>
 
+template <typename F, typename G1, typename G2, typename G, typename G11>
+class FunctionCompose {
+    F f;
+    G1 g1;
+    G2 g2;
+    G g;
+    G11 g11;
+public:
+    FunctionCompose(F _f, G1 _g1, G2 _g2, G _g, G11 _g11) : f(_f), g1(_g1), g2(_g2), g(_g), g11(_g11) {}
+
+    template <typename T>
+    T operator () (T x, T y) {
+        return f(g1(x), g2(y), g(x, y), g11(x));
+    }
+};
+
+class compWithClass {
+public:
+    template <typename F, typename G1, typename G2, typename G, typename G11>
+    auto operator () (F f, G1 g1, G2 g2, G g, G11 g11) {
+        return FunctionCompose <F, G1, G2, G, G11>(f, g1, g2, g, g11);
+    }
+};
+
 template<typename F, typename G1, typename G2, typename G, typename ... G1n>
 auto comp(F func, G1 g1, G2 g2, G g, G1n ... g1n) {
     return [=](auto x, auto y) {
@@ -11,7 +35,7 @@ auto comp(F func, G1 g1, G2 g2, G g, G1n ... g1n) {
 
 int main() {
 
-    auto f = [](int a, int b, int c, int d, int e, int g) { return a + b + c + d + e + g; };
+    auto f = [](int a, int b, int c, int d) { return a + b + c + d; };
     auto g1 = [](int x) { return x * x; };
     auto g2 = [](int x) { return x / 2; };
     auto g = [](int x, int y) { return x + x * y; };
@@ -21,11 +45,17 @@ int main() {
 
 
 
-    auto h = comp(f, g1, g2, g, g11, g12, g13);
+    auto h = comp(f, g1, g2, g, g11);
+
+    compWithClass Comp;
+    auto h1 = Comp(f, g1, g2, g, g11);
+
 
     int x = 1;
-    std::cout << g1(x) << ' ' << g2(x) << ' ' << g(x, x) << ' ' << g11(x) << ' ' << g12(x) << ' ' << g13(x);
-    std::cout << h(x, x);
+    int y = 2;
+    //std::cout << g1(x) << ' ' << g2(y) << ' ' << g(x, y) << ' ' << g11(x) << ' ' << '\n';
+    std::cout << h(x, y) << '\n';
+    std::cout << h1(x, y);
 
 
     return 0;
