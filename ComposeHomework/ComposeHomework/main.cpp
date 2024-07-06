@@ -18,14 +18,6 @@ public:
     }
 };
 
-class compWithClass {
-public:
-    template <typename F, typename G1, typename G2, typename G, typename G11>
-    auto operator () (F f, G1 g1, G2 g2, G g, G11 g11) {
-        return FunctionCompose <F, G1, G2, G, G11>(f, g1, g2, g, g11);
-    }
-};
-
 template<typename F, typename G1, typename G2, typename G, typename ... G1n>
 auto comp(F func, G1 g1, G2 g2, G g, G1n ... g1n) {
     return [=](auto x, auto y) {
@@ -47,8 +39,7 @@ int main() {
 
     auto h = comp(f, g1, g2, g, g11);
 
-    compWithClass Comp;
-    auto h1 = Comp(f, g1, g2, g, g11);
+    FunctionCompose<decltype(f), decltype(g1), decltype(g2), decltype(g), decltype(g11)> h1(f, g1, g2, g, g11);
 
 
     int x = 1;

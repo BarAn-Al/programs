@@ -4,51 +4,49 @@
 #include <vector>
 
 template <typename T>
-concept RationalNumber = (std::integral<T> || std::floating_point<T>);
+class foo {
+};
 
-template <typename T>
-requires RationalNumber<T>
-class XX {
+template <std::floating_point T>
+class foo {
 public:
-	long long sum = 0;
+	T sum = 0;
+	~foo() {}
+	foo() = default;
+	foo(const T& a) : sum(a) {}
 
-	~XX() {}
-	XX() = default;
-	XX(T a) {
-		sum = a;
-	}
-
-	template <typename r1> requires std::integral<r1>
-	auto proc(std::vector <r1> a) {
-		r1 result = 0;
-		for (int i = 0; i < a.size(); i++) {
-			result += a[i];
-		}
-		sum = result;
+	template <std::floating_point ... T>
+	long long processing(T... nums) {
+		sum = nums + ...;
 		return sum;
 	}
-
-	template <typename r2> requires std::floating_point<r2>
-	auto proc(std::vector <r2> a) {
-		r2 result = 0;
-		for (int i = 0; i < a.size(); i++) {
-			result += a[i];
-		}
-
-		sum = result;
-		return sum;
-	}
-
 };
 
 
-int main() {
-	XX item(10);
+template <std::integral T>
+class foo {
+public:
+	T sum = 0;
 
-	std::vector <int> a({ 1, 2, 3, 4, 5, 6, 7 });
-	std::cout << item.proc(a) << '\n';
-	std::vector <double> b({ 1.3, 2.5, 3.2, 4.2, 5.8 });
-	std::cout << item.proc(b) << '\n';
+	~foo() {}
+	foo() = default;
+	foo(const T& a) : sum(a) {}
+
+	template <std::integral ... T>
+	long long processing(T... nums) {
+		sum = nums + ...;
+		return sum;
+	}
+};
+
+
+
+int main() {
+	foo <int> ch;
+	std::cout << ch.processing(1, 2, 3, 4, 5, 6);
+
+	foo <double> ddd;
+	std::cout << ddd.processing(1.1, 2.2, 3.3, 4.4);
 
 	return 0;
 }

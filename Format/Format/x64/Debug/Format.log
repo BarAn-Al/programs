@@ -1,0 +1,31 @@
+﻿  main.cpp
+  The contents of <format> are available only in c++latest mode with concepts support;
+  see https://github.com/microsoft/STL/issues/1814 for details.
+D:\Repos\programs\Format\Format\main.cpp(4,25): warning C4081: требуется "("; обнаружен "newline"
+D:\Repos\programs\Format\Format\main.cpp(11,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(11,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(16,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(16,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(22,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(22,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(23,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(23,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(24,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(24,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(30,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(30,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(34,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(34,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(35,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(35,37): error C3861: format: идентификатор не найден
+D:\Repos\programs\Format\Format\main.cpp(36,31): error C2039: "format": не является членом "std".
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\iostream(19): message : см. объявление "std"
+D:\Repos\programs\Format\Format\main.cpp(36,37): error C3861: format: идентификатор не найден
